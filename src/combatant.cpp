@@ -124,9 +124,9 @@ double Combatant::get_cStm() const
 double Combatant::get_effe(const PokemonType & atk_type, const PokemonType & def_type)
 {
 	map<PokemonType, map<PokemonType,double>>::const_iterator it = TYPE_TABLE.find(atk_type);
-	if (it != TYPE_TABLE.begin()) {
+	if (it != TYPE_TABLE.end()) {
 		map<PokemonType, double>::const_iterator it2 = it->second.find(def_type);
-		if (it2 != it->second.begin())
+		if (it2 != it->second.end())
 			return it2->second;
 	}
 	return 1;
