@@ -22,5 +22,9 @@ int main(int argc, char** argv) {
 
 	uninit_moves_list();
 
+	cout << "Simulation Completed" << endl;
+	if (argc == 1)
+		cin.ignore();
+
 	return 0;
 }

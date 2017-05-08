@@ -153,8 +153,7 @@ int Combatant::get_move_damage(const Move * move, const Combatant * opponent, bo
 	double stab = (move->type == type1 || move->type == type2) ? STAB_MODIFIER : 1;
 	double effe1 = get_effe(move->type,opponent->type1);
 	double effe2 = get_effe(move->type, opponent->type2);
-	double dodge_mod = dodged ? DODGE_MODIFIER : 1;
-	return formula_damage(move->power, get_cAtk(), opponent->get_cDef(), stab, effe1*effe2, dodge_mod);
+	return formula_damage(move->power, get_cAtk(), opponent->get_cDef(), stab, effe1*effe2, dodged);
 }
 
 

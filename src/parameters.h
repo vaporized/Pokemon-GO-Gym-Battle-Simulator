@@ -20,7 +20,7 @@ const int COLUMN_WIDTH = 12;
 
 /* GAME PARAMETERS*/
 
-const double DODGE_MODIFIER = 0.25;
+const int DODGE_MODIFIER = 4;
 
 const double STAB_MODIFIER = 1.25;
 const int MAX_ENERGY = 100;
