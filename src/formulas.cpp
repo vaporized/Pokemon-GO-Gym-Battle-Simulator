@@ -13,18 +13,23 @@ int formula_CP(double cAtk, double cDef, double cStm)
 }
 
 
-int formula_damage(int power, double cAtk, double cDef, double stab, double effe, double dodge_mod) {
-	return int(power * cAtk / cDef * stab * effe * dodge_mod * 0.5) + 1;
+int formula_damage(int power, double cAtk, double cDef, double stab, double effe, bool dodged) {
+	int raw_dmg = int(power * cAtk / cDef * stab * effe * 0.5) + 1;
+	if (dodged) 
+		return raw_dmg / DODGE_MODIFIER > 1 ? raw_dmg / DODGE_MODIFIER : 1;
+	else 
+		return raw_dmg;
+	
 }
 
 int formula_prestige(int attacker_CP, int defender_CP)
 {
 	int prestige;
 	if (attacker_CP > defender_CP) {
-		prestige = (int)310 * ((double)defender_CP / attacker_CP) - 55;
+		prestige = int(310 * ((double)defender_CP / attacker_CP)) - 55;
 	}
 	else {
-		prestige = (int)500 * ((double)defender_CP / attacker_CP);
+		prestige = int(500 * ((double)defender_CP / attacker_CP));
 	}
 	if (prestige < 100)
 		prestige = 100;

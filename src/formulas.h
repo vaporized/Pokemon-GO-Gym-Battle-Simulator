@@ -14,7 +14,7 @@ int formula_CP(double cAtk, double cDef, double cStm);
 
 
 // The equally famous Damage Formula
-int formula_damage(int power, double cAtk, double cDef, double stab, double effe, double dodge_mod);
+int formula_damage(int power, double cAtk, double cDef, double stab, double effe, bool dodge);
 
 
 
