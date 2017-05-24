@@ -22,7 +22,7 @@ ostream & operator<<(ostream & os, const Combatant & c)
 	os << c.level << ',';
 	os << c.ivAtk << ',';
 	os << c.ivDef << ',';
-	os << c.ivDef << ',';
+	os << c.ivStm << ',';
 	os << (c.quick_move ? c.quick_move->name : "") << ',';
 	os << (c.charge_move ? c.charge_move->name : "") << ',';
 
