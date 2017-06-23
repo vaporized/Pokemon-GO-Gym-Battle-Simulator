@@ -7,6 +7,60 @@ map<string, QuickMove*> QUICK_MOVES_LIST;
 map<string, ChargeMove*> CHARGE_MOVES_LIST;
 map<string, Pokemon> POKEMON_LIST;
 
+int DODGE_MODIFIER = 4;
+
+double STAB_MODIFIER = 1.25;
+int MAX_ENERGY = 100;
+
+int BATTLE_START_TIME_MS = 0;
+int MAX_BATTLE_TIME_MS = 100000;
+int SWITCHING_TIME_MS = 800;
+
+int DEFENDER_DELAY_MEAN_MS = 2000;
+int DEFENDER_DELAY_STDEV_MS = 400;
+
+int DODGE_COOLDOWN_MS = 500;
+int CHARGING_TIME_MS = 600;
+int DODGE_WINDOW_MS = 700;
+
+
+
+void init_game_parameters(string filepath) {
+	ifstream ifs(filepath);
+	CSVIterator csvIt(ifs);
+
+	while (csvIt != CSVIterator()) {
+
+		if ((*csvIt)[0] == "DODGE_MODIFIER")
+			DODGE_MODIFIER = stoi((*csvIt)[1]);
+		else if ((*csvIt)[0] == "STAB_MODIFIER")
+			STAB_MODIFIER = stod((*csvIt)[1]);
+		else if ((*csvIt)[0] == "MAX_ENERGY")
+			MAX_ENERGY = stoi((*csvIt)[1]);
+		else if ((*csvIt)[0] == "BATTLE_START_TIME_MS")
+			BATTLE_START_TIME_MS = stoi((*csvIt)[1]);
+		else if ((*csvIt)[0] == "MAX_BATTLE_TIME_MS")
+			MAX_BATTLE_TIME_MS = stoi((*csvIt)[1]);
+		else if ((*csvIt)[0] == "SWITCHING_TIME_MS")
+			SWITCHING_TIME_MS = stoi((*csvIt)[1]);
+		else if ((*csvIt)[0] == "DEFENDER_DELAY_MEAN_MS")
+			DEFENDER_DELAY_MEAN_MS = stoi((*csvIt)[1]);
+		else if ((*csvIt)[0] == "DEFENDER_DELAY_STDEV_MS")
+			DEFENDER_DELAY_STDEV_MS = stoi((*csvIt)[1]);
+		else if ((*csvIt)[0] == "DODGE_COOLDOWN_MS")
+			DODGE_COOLDOWN_MS = stoi((*csvIt)[1]);
+		else if ((*csvIt)[0] == "CHARGING_TIME_MS")
+			CHARGING_TIME_MS = stoi((*csvIt)[1]);
+		else if ((*csvIt)[0] == "DODGE_WINDOW_MS")
+			DODGE_WINDOW_MS = stoi((*csvIt)[1]);
+
+		csvIt++;
+	}
+
+	ifs.close();
+
+}
+
 
 
 void init_cpm_table(string filepath) {

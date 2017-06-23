@@ -10,6 +10,7 @@ const std::string TYPE_TABLE_FILEPATH = "PoGoData/typeTable.csv";
 const std::string QUICK_MOVES_LIST_FILEPATH = "PoGoData/quickMoves.csv";
 const std::string CHARGE_MOVES_LIST_FILEPATH = "PoGoData/chargeMoves.csv";
 const std::string POKEMON_DATA_FILEPATH = "PoGoData/pokemonStats.csv";
+const std::string GAME_PARAMETERS_FILEPATH = "PoGoData/gameParameters.csv";
 
 const char* const DEFAULT_INPUT_FILENAME = "PoGoGymSim_Default_Input.csv";
 const char* const DEFAULT_OUTPUT_FILENAME = "PoGoGymSim_Default_Output.csv";
@@ -19,20 +20,23 @@ const int COLUMN_WIDTH = 12;
 
 
 /* GAME PARAMETERS*/
+// These variables are defined in resources.cpp
 
-const int DODGE_MODIFIER = 4;
+extern int DODGE_MODIFIER;
 
-const double STAB_MODIFIER = 1.25;
-const int MAX_ENERGY = 100;
+extern double STAB_MODIFIER;
+extern int MAX_ENERGY;
 
-const int BATTLE_START_TIME_MS = 0;
-const int MAX_BATTLE_TIME_MS = 100000;
-const int SWITCHING_TIME_MS = 800;
-const int DEFENDER_EXPECTED_DELAY_MS = 2000;
+extern int BATTLE_START_TIME_MS;
+extern int MAX_BATTLE_TIME_MS;
+extern int SWITCHING_TIME_MS;
 
-const int DODGE_COOLDOWN_MS = 500;
-const int CHARGING_TIME_MS = 600;
-const int DODGE_WINDOW_MS = 700;
+extern int DEFENDER_DELAY_MEAN_MS;
+extern int DEFENDER_DELAY_STDEV_MS;
+
+extern int DODGE_COOLDOWN_MS;
+extern int CHARGING_TIME_MS;
+extern int DODGE_WINDOW_MS;
 
 
 #endif // !

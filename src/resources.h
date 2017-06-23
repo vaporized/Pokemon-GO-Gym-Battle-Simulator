@@ -32,8 +32,8 @@ extern map<string, ChargeMove*> CHARGE_MOVES_LIST;
 // The key is the Pokemon's name
 extern map<string, Pokemon> POKEMON_LIST;
 
-
-
+// This function loads basic game parameters from a specified .csv file
+void init_game_parameters(string filepath = GAME_PARAMETERS_FILEPATH);
 
 // This function loads CPM data from a specifed .csv file
 void init_cpm_table(string = CPM_TABLE_FILEPATH);

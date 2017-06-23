@@ -7,11 +7,11 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
+	init_game_parameters();
 	init_cpm_table();
 	init_types();
 	init_moves_list();
 	init_pokemon_list();
-
 
 
 	UI ui;

@@ -19,7 +19,7 @@ bool _helper_function_2() {
 int _helper_function_3() {
 	random_generator.seed(time(0));
 	uniform_int_distribution<int> dist(-8, 8);
-	return DEFENDER_EXPECTED_DELAY_MS + dist(random_generator) * 50;
+	return DEFENDER_DELAY_MEAN_MS + dist(random_generator) * 50;
 }
 
 
@@ -163,8 +163,8 @@ void AttackerStrategy::handle_special_safe(list<Action>& actions, const Combatan
 	// Decided whether to queue a special attack after dodging or not
 	// Depends on the duration of the charge move and enemy's. Tricky!
 	int cool_down = self->get_charge_move()->duration - time_to_dw_close;
-	int enemy_next_qm_close = DEFENDER_EXPECTED_DELAY_MS + enemy->get_quick_move()->dmg_wd_end;
-	int enemy_next_cm_close = DEFENDER_EXPECTED_DELAY_MS + enemy->get_charge_move()->dmg_wd_end;
+	int enemy_next_qm_close = DEFENDER_DELAY_MEAN_MS + enemy->get_quick_move()->dmg_wd_end;
+	int enemy_next_cm_close = DEFENDER_DELAY_MEAN_MS + enemy->get_charge_move()->dmg_wd_end;
 
 	if (dodge_strat == 's' && cool_down < enemy_next_cm_close) {
 		actions.push_back(Action(ACTIONTYPE_SPECIAL, 0));
@@ -222,11 +222,11 @@ void DefenderStrategy::get(list<Action>& actions, const int time, const Combatan
 		switch (special_strat)
 		{
 		case '1':
-			actions.push_back(Action(ACTIONTYPE_QUICK, DEFENDER_EXPECTED_DELAY_MS));
-			actions.push_back(Action(ACTIONTYPE_SPECIAL, DEFENDER_EXPECTED_DELAY_MS));
+			actions.push_back(Action(ACTIONTYPE_QUICK, DEFENDER_DELAY_MEAN_MS));
+			actions.push_back(Action(ACTIONTYPE_SPECIAL, DEFENDER_DELAY_MEAN_MS));
 			break;
 		case '2':
-			actions.push_back(Action(ACTIONTYPE_SPECIAL, DEFENDER_EXPECTED_DELAY_MS));
+			actions.push_back(Action(ACTIONTYPE_SPECIAL, DEFENDER_DELAY_MEAN_MS));
 			break;
 		case '3':
 			actions.push_back(Action(ACTIONTYPE_SPECIAL, _helper_function_3()));
@@ -238,7 +238,7 @@ void DefenderStrategy::get(list<Action>& actions, const int time, const Combatan
 		{
 		case '1':
 		case '2':
-			actions.push_back(Action(ACTIONTYPE_QUICK, DEFENDER_EXPECTED_DELAY_MS));
+			actions.push_back(Action(ACTIONTYPE_QUICK, DEFENDER_DELAY_MEAN_MS));
 			break;
 		case '3':
 			actions.push_back(Action(ACTIONTYPE_QUICK, _helper_function_3()));
